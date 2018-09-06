@@ -1,0 +1,476 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>珠峰培训React教程</title>
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+</head>
+<body>
+<div class="nav">
+  <div class="logo">
+      
+      
+  </div>
+<ul><li class="active"><a href="index.html">React基础篇</a></li><li><a href="html/Redux应用.html">Redux应用</a></li><li><a href="html/Redux深入.html">Redux深入</a></li><li><a href="html/React-Redux.html">React-Redux</a></li><li><a href="html/MiddleWare应用.html">MiddleWare应用</a></li><li><a href="html/React路由.html">React路由</a></li></ul></div>
+
+
+<div class="warpper">
+
+  <div class="page-toc">
+      <ul><li><a href="#t0学习">学习</a></li><li><a href="#t1React基础篇">React基础篇</a><ul><li><a href="#t21.什么是React?">1.什么是React?</a></li><li><a href="#t32.组件化的概念">2.组件化的概念</a></li><li><a href="#t43.跑通react开发环境">3.跑通react开发环境</a></li><li><a href="#t54.简介JSX">4.简介JSX</a></li><li><a href="#t65.createElement">5.createElement</a></li><li><a href="#t76.react元素/JSX元素">6.react元素/JSX元素</a></li><li><a href="#t87.模拟render实现">7.模拟render实现</a></li><li><a href="#t98.JSX表达式的用法">8.JSX表达式的用法</a></li><li><a href="#t109.JSX属性">9.JSX属性</a></li><li><a href="#t1110.组件的特点声明方式">10.组件的特点声明方式</a></li><li><a href="#t1211.组件的两种定义方式">11.组件的两种定义方式</a></li><li><a href="#t1312.组件中属性和状态的区别">12.组件中属性和状态的区别</a></li><li><a href="#t1413.绑定事件">13.绑定事件</a></li><li><a href="#t1514.属性校验,默认属性">14.属性校验,默认属性</a></li><li><a href="#t1615.状态的使用">15.状态的使用</a></li><li><a href="#t1716.复合组件">16.复合组件</a><ul><li><a href="#t18父子组件的通信">父子组件的通信</a></li><li><a href="#t19子父组件的通信">子父组件的通信</a></li></ul></li><li><a href="#t2017.受控组件和非受控组件">17.受控组件和非受控组件</a><ul><li><a href="#t21实现双向数据绑定">实现双向数据绑定</a></li><li><a href="#t22受控组件">受控组件</a></li><li><a href="#t23非受控组件">非受控组件</a></li></ul></li><li><a href="#t2418.声明周期">18.声明周期</a></li><li><a href="#t2519.评论面板">19.评论面板</a></li><li><a href="#t2620.React实现百度搜索框">20.React实现百度搜索框</a></li><li><a href="#t2721.react轮播图考试">21.react轮播图考试</a></li></ul></li></ul>
+  </div>
+  
+  <div class="content markdown-body">
+      <h2 id="t0学习">学习 <a href="#t0学习"> # </a></h2>
+<p>学习要自信,学技术的目的是让我们更有自信。最害怕的事是越学越觉得恐惧。觉得自己什么都不会。</p>
+<p>不要忘记你努力的时候别人也再努力，但是你不努力就会被落下很远!</p>
+<h2 id="t1React基础篇">React基础篇 <a href="#t1React基础篇"> # </a></h2>
+<h3 id="t21.什么是React?">1.什么是React? <a href="#t21.什么是React?"> # </a></h3>
+<ul>
+<li>React 是一个用于构建用户界面的JavaScript库</li>
+<li>核心专注于视图,目的实现组件化开发</li>
+</ul>
+<h3 id="t32.组件化的概念">2.组件化的概念 <a href="#t32.组件化的概念"> # </a></h3>
+<p>我们可以很直观的将一个复杂的页面分割成若干个独立组件,每个组件包含自己的逻辑和样式 再将这些独立组件组合完成一个复杂的页面。 这样既减少了逻辑复杂度，又实现了代码的重用</p>
+<ul>
+<li>可组合：一个组件可以和其他的组件一起使用或者可以直接嵌套在另一个组件内部</li>
+<li>可重用：每个组件都是具有独立功能的，它可以被使用在多个场景中</li>
+<li>可维护：每个小的组件仅仅包含自身的逻辑，更容易被理解和维护</li>
+</ul>
+<p><em><a href="https://pan.baidu.com/s/1hsivfN2">https://pan.baidu.com/s/1hsivfN2</a></em></p>
+<h3 id="t43.跑通react开发环境">3.跑通react开发环境 <a href="#t43.跑通react开发环境"> # </a></h3>
+<pre><code>$ npm install create-react-app -g
+$ create-react-app &lt;project-name&gt;
+$ cd &lt;project-name&gt; &amp;&amp; npm start
+</code></pre><blockquote>
+<p>默认会自动安装React,react由两部分组成,分别是:</p>
+</blockquote>
+<ul>
+<li>react.js 是 React 的核心库</li>
+<li>react-dom.js 是提供与DOM相关的功能,会在window下增加ReactDOM属性,内部比较重要的方法是render,将react元素或者react组件插入到页面中。</li>
+</ul>
+<h3 id="t54.简介JSX">4.简介JSX <a href="#t54.简介JSX"> # </a></h3>
+<ul>
+<li>是一种JS和HTML混合的语法,将组件的结构、数据甚至样式都聚合在一起定义组件,会编译成普通的Javascript。</li>
+</ul>
+<blockquote>
+<p>需要注意的是JSX并不是html,在JSX中属性不能包含关键字，像class需要写成className,for需要写成htmlFor,并且属性名需要采用驼峰命名法！</p>
+</blockquote>
+<h3 id="t65.createElement">5.createElement <a href="#t65.createElement"> # </a></h3>
+<p>JSX其实只是一种语法糖,最终会通过<a href="https://babeljs.io/repl/">babel</a>转译成createElement语法,以下代码等价</p>
+<pre><code>ReactDOM.render(&lt;div&gt;姜,&lt;span&gt;帅哥&lt;/span&gt;&lt;/div&gt;);
+ReactDOM.render(React.createElement("div",null,"姜,",React.createElement("span",null,"帅哥")));
+</code></pre><blockquote>
+<p>我们一般使用React.createElement来创建一个虚拟dom元素。</p>
+</blockquote>
+<h3 id="t76.react元素/JSX元素">6.react元素/JSX元素 <a href="#t76.react元素/JSX元素"> # </a></h3>
+<pre><code>function ReactElement(type,props) {
+  this.type = type;
+  this.props = props;
+}
+let React = {
+  createElement(type,props={},...childrens){
+      childrens.length===1?childrens = childrens[0]:void 0
+      return new ReactElement(type,{...props,children:childrens})
+  }
+};
+</code></pre><blockquote>
+<p>ReactElement就是虚拟dom的概念，具有一个type属性代表当前的节点类型，还有节点的属性props</p>
+</blockquote>
+<h3 id="t87.模拟render实现">7.模拟render实现 <a href="#t87.模拟render实现"> # </a></h3>
+<pre><code>let render = (eleObj,container)=&gt;{
+  // 先取出第一层 进行创建真实dom
+  let {type,props} = eleObj;
+  let elementNode = document.createElement(type); // 创建第一个元素
+  for(let attr in props){ // 循环所有属性
+      if(attr === 'children'){ // 如果是children表示有嵌套关系
+          if(typeof props[attr] == 'object'){ // 看是否是只有一个文本节点
+              props[attr].forEach(item=&gt;{ // 多个的话循环判断 如果是对象再次调用render方法
+                  if(typeof item === 'object'){
+                      render(item,elementNode)
+                  }else{ //是文本节点 直接创建即可
+                      elementNode.appendChild(document.createTextNode(item));
+                  }
+              })
+          }else{ // 只有一个文本节点直接创建即可
+              elementNode.appendChild(document.createTextNode(props[attr]));
+          }
+      }else if(attr === 'className'){ // 是不是class属性 class 属性特殊处理
+          elementNode.setAttribute('class',props[attr]);
+      }else{
+          elementNode.setAttribute(attr,props[attr]);
+      }
+  }
+  container.appendChild(elementNode)
+};
+</code></pre><h3 id="t98.JSX表达式的用法">8.JSX表达式的用法 <a href="#t98.JSX表达式的用法"> # </a></h3>
+<ul>
+<li>1) 可以放JS的执行结果</li>
+<li>2) 如果换行需要用()包裹jsx代码</li>
+<li>3) 可以把JSX元素当作函数的返回值</li>
+<li>4) &lt;{来判断是表达式还是js</li>
+</ul>
+<pre><code>import React from 'react';
+import ReactDOM from 'react-dom';
+
+function toResult({name,age}) {
+  return &lt;span&gt;今年{name},{age}岁了!&lt;/span&gt;
+}
+let arrs =  [{name:'zfpx',age:8},,{name:'姜文',age:28}];
+ReactDOM.render(&lt;div&gt;
+  {arrs.map(((item,index)=&gt;(
+      typeof item==='object'?&lt;li key={index}&gt;{toResult(item)}&lt;/li&gt;:null
+  )))}
+&lt;/div&gt;,document.getElementById('root'));
+</code></pre><blockquote>
+<p>null也是合法元素,循环时需要带key属性</p>
+</blockquote>
+<h3 id="t109.JSX属性">9.JSX属性 <a href="#t109.JSX属性"> # </a></h3>
+<ul>
+<li>在JSX中分为普通属性和特殊属性，像class要写成className,for要写成htmlFor</li>
+<li>style要采用对象的方式</li>
+<li>dangerouslyInnerHTML插入html</li>
+</ul>
+<h3 id="t1110.组件的特点声明方式">10.组件的特点声明方式 <a href="#t1110.组件的特点声明方式"> # </a></h3>
+<p>react元素是是组件组成的基本单位</p>
+<ul>
+<li>首字母必须大写,目的是为了和JSX元素进行区分</li>
+<li>组件定义后可以像JSX元素一样进行使用</li>
+<li>每个组件必须返回唯一的顶级JSX元素</li>
+<li>可以通过render方法将组件渲染成真实DOM</li>
+</ul>
+<h3 id="t1211.组件的两种定义方式">11.组件的两种定义方式 <a href="#t1211.组件的两种定义方式"> # </a></h3>
+<p>react怎么区分是组件还是jsx元素？组件名需要开头大写，react组件当作jsx来进行使用</p>
+<ul>
+<li><p>第一种方式是函数声明</p>
+<pre><code>function Build(props) {
+return &lt;p&gt;{props.name} {props.age}&lt;/p&gt;
+}
+render(&lt;div&gt;
+&lt;Build name={school1.name} age={school1.age}/&gt;
+&lt;Build {...school2} /&gt;
+&lt;/div&gt;,window.root);
+</code></pre></li>
+<li><p>第二种方式是类声明</p>
+<pre><code>class Build extends Component{
+render(){
+    let {name,age} = this.props;
+    return &lt;p&gt;{name} {age}&lt;/p&gt;
+}
+}
+</code></pre></li>
+</ul>
+<blockquote>
+<p>类声明有状态，this，和声明周期</p>
+</blockquote>
+<h3 id="t1312.组件中属性和状态的区别">12.组件中属性和状态的区别 <a href="#t1312.组件中属性和状态的区别"> # </a></h3>
+<ul>
+<li>组件的数据来源有两个地方<ul>
+<li>props 外界传递过来的(默认属性，属性校验)</li>
+<li>state 状态是自己的,改变状态唯一的方式就是setState</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>属性和状态的变化都会影响视图更新</p>
+</blockquote>
+<h3 id="t1413.绑定事件">13.绑定事件 <a href="#t1413.绑定事件"> # </a></h3>
+<ul>
+<li>给元素绑定事件，事件绑定方式</li>
+</ul>
+<pre><code>class Clock extends Component {
+  constructor(){
+      super();
+      this.state = {date:new Date().toLocaleString()}
+  }
+  componentDidMount(){ //组件渲染完成，当渲染后会自动触发此函数
+      this.timer = setInterval(()=&gt;{ // 箭头函数 否则this 指向的是window
+          this.setState({date:new Date().toLocaleString()})
+      },1000);
+  }
+  componentWillUnmount(){ //组件将要卸载，当组件移除时会调用
+      clearInterval(this.timer); //一般在这个方法中 清除定时器和绑定的事件
+  }
+  destroy=()=&gt;{ //es7 箭头函数
+      // 删除某个组件
+      ReactDOM.unmountComponentAtNode(window.root);
+  }
+  render(){
+      // 给react元素绑定事件默认this是undefined,bind方式 在就是箭头函数
+      return &lt;h1 onClick={this.destroy}&gt;{this.state.date}&lt;/h1&gt;
+  }
+}
+// 执行顺序 constructor -&gt; render -&gt; componentDidMount -&gt; setState-&gt; render - onClick-&gt; unmountComponentAtNode -&gt; componentWillUnmount -&gt; clearInterval
+ReactDOM.render(&lt;Clock/&gt;,window.root);
+</code></pre><blockquote>
+<p>给jsx元素绑定事件要注意事件中的this指向，事件名采用 on+"开头大写事件名"的方式</p>
+</blockquote>
+<h3 id="t1514.属性校验,默认属性">14.属性校验,默认属性 <a href="#t1514.属性校验,默认属性"> # </a></h3>
+<pre><code>import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'; //引入属性校验的模块
+class School extends React.Component{ // 类上的属性就叫静态属性
+  static propTypes = { // 校验属性的类型和是否必填
+      age:PropTypes.number.isRequired, // 支持的类型可以参考prop-types的readme文件
+  };
+  static defaultProps = { // 先默认调用defaultProps
+      name:'珠峰',
+      age:1
+  }; // 默认属性
+  constructor(props){ //如果想在构造函数中拿到属性需要通过参数的方式
+       //不能在组件中更改属性 不能修改属性*
+      super();
+  }
+  render(){
+      return &lt;h1&gt;{this.props.name} {this.props.age}&lt;/h1&gt;
+  }
+}
+</code></pre><blockquote>
+<p>propTypes和defaultProps名字不能更改，这是react规定好的名称</p>
+</blockquote>
+<h3 id="t1615.状态的使用">15.状态的使用 <a href="#t1615.状态的使用"> # </a></h3>
+<pre><code>class Counter extends Component{
+  constructor(){
+      super();
+      this.state = {count:0}
+  };
+  handleClick = ()=&gt;{
+      // setState方法会进行合并 setState有两种写法 一种是对象一种是函数
+      /*this.setState({count:this.state.count+1});
+        this.setState({count:this.state.count+1});*/
+      //this.setState((prevState)=&gt;({count:prevState.count+1})); //如果返回的就是一个对象可以用小括号包裹
+      //this.setState((prevState)=&gt;({count:prevState.count+1}));
+      // 下一个状态是依赖于上一个状态时需要写成函数的方式
+      this.setState({count:this.state.count+1},function () {
+          this.setState({count:this.state.count+1});
+      }); // 这个写法等同于 this.setState((prevState)=&gt;({count:prevState.count+1}));
+  };
+  render(){
+      console.log('render');
+      return (
+          &lt;p&gt;
+              {this.state.count}
+              &lt;button onClick={this.handleClick}&gt;+&lt;/button&gt;
+          &lt;/p&gt;
+      )
+  }
+}
+ReactDOM.render(&lt;Counter/&gt;,window.root);
+</code></pre><blockquote>
+<p>如果设置多个状态setState会合并，如果下一个状态依赖于上一个状态，需要写成函数的方式</p>
+</blockquote>
+<h3 id="t1716.复合组件">16.复合组件 <a href="#t1716.复合组件"> # </a></h3>
+<p>复合组件就是将多个组件进行组合，结构非常复杂时可以把组件分离开</p>
+<h4 id="t18父子组件的通信">父子组件的通信 <a href="#t18父子组件的通信"> # </a></h4>
+<pre><code>class Panel extends Component{
+  render(){
+      let {header,body} = this.props;
+      return (
+          &lt;div className="container"&gt;
+              &lt;div className="panel-default panel"&gt;
+                  &lt;Header head={header}&gt;&lt;/Header&gt;
+                  &lt;Body b={body}/&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      )
+  }
+} // react种需要将属性一层层向下传递 单向数据流
+class Body extends Component{
+  render(){return (&lt;div className="panel-body"&gt;{this.props.b}&lt;/div&gt;)}
+}
+class Header extends Component{
+  render(){return (&lt;div className="panel-heading"&gt;{this.props.head}&lt;/div&gt;)}
+}
+let data = {header:'我非常帅',body:'长的帅'};
+ReactDOM.render(&lt;Panel {...data}/&gt;,window.root);
+</code></pre><h4 id="t19子父组件的通信">子父组件的通信 <a href="#t19子父组件的通信"> # </a></h4>
+<p>通过父亲传递给儿子一个函数，儿子调用父亲的函数将值传递给父亲,父亲更新值，刷新视图</p>
+<pre><code>class Panel extends Component{
+  constructor(){
+      super();
+      this.state = {color:'primary'}
+  }
+  changeColor=(color)=&gt;{ //到时候儿子传递一个颜色
+      this.setState({color});
+  };
+  render(){
+      return (
+          &lt;div className="container"&gt;
+              &lt;div className={"panel-"+this.state.color+" panel"}&gt;
+                  &lt;Header head={this.props.header}
+                          change={this.changeColor}
+                  &gt;&lt;/Header&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      )
+  }
+}
+class Header extends Component{
+  handleClick = ()=&gt;{
+      this.props.change('danger'); //调用父亲的方法
+  };
+  render(){return (
+      &lt;div className="panel-heading"&gt;
+      {this.props.head} &lt;button className="btn btn-danger" onClick={this.handleClick}&gt;改颜色&lt;/button&gt;
+      &lt;/div&gt;)}
+}
+</code></pre><h3 id="t2017.受控组件和非受控组件">17.受控组件和非受控组件 <a href="#t2017.受控组件和非受控组件"> # </a></h3>
+<ul>
+<li>受状态控制的组件，必须要有onChange方法，否则不能使用</li>
+<li>受控组件可以赋予默认值（官方推荐使用 受控组件）</li>
+</ul>
+<h4 id="t21实现双向数据绑定">实现双向数据绑定 <a href="#t21实现双向数据绑定"> # </a></h4>
+<pre><code>class Input extends Component{
+  constructor(){
+      super();
+      this.state = {val:'100'}
+  }
+  handleChange = (e) =&gt;{ //e是事件源
+      let val = e.target.value;
+      this.setState({val});
+  };
+  render(){
+      return (&lt;div&gt;
+          &lt;input type="text" value={this.state.val} onChange={this.handleChange}/&gt;
+          {this.state.val}
+      &lt;/div&gt;)
+  }
+}
+</code></pre><h4 id="t22受控组件">受控组件 <a href="#t22受控组件"> # </a></h4>
+<pre><code>class Sum extends Component{
+  constructor(){
+      super();
+      this.state = {a:1,b:1}
+  }
+  // key表示的就是当前状态改的是哪一个
+  // e表示的是事件源
+  handleChange(key,e){ //处理多个输入框的值映射到状态的方法
+      this.setState({
+          [key]:parseInt(e.target.value)||0
+      })
+  }
+  render(){
+      return (
+          &lt;div&gt;
+              &lt;input type="number" value={this.state.a} onChange={e=&gt;{this.handleChange('a',e)}}/&gt;
+              &lt;input type="number" value={this.state.b} onChange={e=&gt;{this.handleChange('b',e)}}/&gt;
+              {this.state.a+this.state.b}
+          &lt;/div&gt;
+      )
+  }
+}
+</code></pre><h4 id="t23非受控组件">非受控组件 <a href="#t23非受控组件"> # </a></h4>
+<pre><code>class Sum extends Component{
+  constructor(){
+      super();
+      this.state =  {result:''}
+  }
+  //通过ref设置的属性 可以通过this.refs获取到对应的dom元素
+  handleChange = () =&gt;{
+      let result = this.refs.a.value + this.b.value;
+      this.setState({result});
+  };
+  render(){
+      return (
+          &lt;div onChange={this.handleChange}&gt;
+              &lt;input type="number" ref="a"/&gt;
+              {/*x代表的真实的dom,把元素挂载在了当前实例上*/}
+              &lt;input type="number" ref={(x)=&gt;{
+                  this.b = x;
+              }}/&gt;
+              {this.state.result}
+          &lt;/div&gt;
+      )
+  }
+}
+</code></pre><h3 id="t2418.声明周期">18.声明周期 <a href="#t2418.声明周期"> # </a></h3>
+<pre><code>class Counter extends React.Component{ // 他会比较两个状态相等就不会刷新视图 PureComponent是浅比较
+static defaultProps = {
+  name:'珠峰培训'
+};
+constructor(props){
+  super();
+  this.state = {number:0}
+  console.log('1.constructor构造函数')
+}
+componentWillMount(){ // 取本地的数据 同步的方式：采用渲染之前获取数据，只渲染一次
+  console.log('2.组件将要加载 componentWillMount');
+}
+componentDidMount(){
+  console.log('4.组件挂载完成 componentDidMount');
+}
+handleClick=()=&gt;{
+  this.setState({number:this.state.number+1});
+};
+// react可以shouldComponentUpdate方法中优化 PureComponent 可以帮我们做这件事
+shouldComponentUpdate(nextProps,nextState){ // 代表的是下一次的属性 和 下一次的状态
+  console.log('5.组件是否更新 shouldComponentUpdate');
+  return nextState.number%2;
+  // return nextState.number!==this.state.number; //如果此函数种返回了false 就不会调用render方法了
+} //不要随便用setState 可能会死循环
+componentWillUpdate(){
+  console.log('6.组件将要更新 componentWillUpdate');
+}
+componentDidUpdate(){
+  console.log('7.组件完成更新 componentDidUpdate');
+}
+render(){
+  console.log('3.render');
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{this.state.number}&lt;/p&gt;
+      {this.state.number&gt;3?null:&lt;ChildCounter n={this.state.number}/&gt;}
+      &lt;button onClick={this.handleClick}&gt;+&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+}
+class ChildCounter extends Component{
+componentWillUnmount(){
+  console.log('组件将要卸载componentWillUnmount')
+}
+componentWillMount(){
+  console.log('child componentWillMount')
+}
+render(){
+  console.log('child-render')
+  return (&lt;div&gt;
+    {this.props.n}
+  &lt;/div&gt;)
+}
+componentDidMount(){
+  console.log('child componentDidMount')
+}
+componentWillReceiveProps(newProps){ // 第一次不会执行，之后属性更新时才会执行
+  console.log('child componentWillReceiveProps')
+}
+shouldComponentUpdate(nextProps,nextState){
+  return nextProps.n%3; //子组件判断接收的属性 是否满足更新条件 为true则更新
+}
+}
+// defaultProps
+// constructor
+// componentWillMount
+// render
+// componentDidMount
+// 状态更新会触发的
+// shouldComponentUpdate nextProps,nextState=&gt;boolean
+// componentWillUpdate
+// componentDidUpdate
+// 属性更新
+// componentWillReceiveProps newProps
+// 卸载
+// componentWillUnmount
+</code></pre><p><img src="http://son.fullstackjavascript.cn/lifeCycle.png" alt="lifeCycle"></p>
+<h3 id="t2519.评论面板">19.评论面板 <a href="#t2519.评论面板"> # </a></h3>
+<h3 id="t2620.React实现百度搜索框">20.React实现百度搜索框 <a href="#t2620.React实现百度搜索框"> # </a></h3>
+<h3 id="t2721.react轮播图考试">21.react轮播图考试 <a href="#t2721.react轮播图考试"> # </a></h3>
+
+      <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
+  </div>
+  
+</div>
+
+
+
+
+<div id="translate-man-app" class="content-3WfBL_0" style="background-color: rgb(255, 255, 255); display: none;"><div data-v-ea0bd11e="" class="outputBox-qe9A4_0"><div data-v-ea0bd11e="" class="outputBox-3oESn_0"><span data-v-ea0bd11e="" class="outputBox-13Ovx_0"></span><!----></div><div data-v-ea0bd11e="" class="outputBox-1GLb__0"><!----><div data-v-ea0bd11e="" class="outputBox-onVZH_0"><img src="chrome-extension://fapgabkkfcaejckbfmfcdgnfefbmlion/static/sound.svg" class="icon-tprjJ_0"></div></div><div data-v-ea0bd11e="" class="outputBox-2sJgr_0"></div><div data-v-ea0bd11e="" class="outputBox-17RAm_0" style="display: none;"><!----><!----><!----><div data-v-ea0bd11e=""></div></div></div></div></body></html>
